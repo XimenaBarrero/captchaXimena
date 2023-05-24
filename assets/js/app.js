@@ -14,8 +14,12 @@ let allCharacters = ["A","B","C","D","E","F","G","H",
  function getCaptcha(){
     for(let i = 0; i < 6; i++ ){
         let randomChar = allCharacters[Math.floor(Math.random() * allCharacters.length)];
-        console.log(randomChar);
+        captcha.innerText += `${randomChar}`; //passing random characters inside captcha innerText
     }
  }
 
+ reloadBtn.addEventListener("click", ()=> {
+    captcha.innerText = "";
+    getCaptcha();
+ });
  getCaptcha();
