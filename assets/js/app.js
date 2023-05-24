@@ -34,6 +34,12 @@ let allCharacters = ["A","B","C","D","E","F","G","H",
     if(inputVal == captcha.innerText){ //if catcha matches 
         statusTxt.style.color="#4db2ec"
         statusTxt.innerText="Good! You dont seem to be a robot.";
+        setTimeout(()=>{
+            statusTxt.style.display = "";
+            inputField.value = "";
+            captcha.innerText = ""; //calling getCaptcha function
+            getCaptcha(); //removing user entered value and captcha innerText after 4 sec
+        }, 4000);
     }else{
         statusTxt.style.color="#ff0"
         statusTxt.innerText="Captcha did not match. Please try again!";
