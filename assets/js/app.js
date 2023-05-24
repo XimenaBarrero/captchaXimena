@@ -1,7 +1,8 @@
 const captcha = document.querySelector(".captacha"),
 reloadBtn = document.querySelector(".reload-btn"),
 inputField = document.querySelector("input"),
-checkBtn = document.querySelector(".check-btn");
+checkBtn = document.querySelector(".check-btn"),
+statusTxt = document.querySelector(".status-txt");
 
 //storing all captcha characters in array
 let allCharacters = ["A","B","C","D","E","F","G","H",
@@ -14,12 +15,27 @@ let allCharacters = ["A","B","C","D","E","F","G","H",
  function getCaptcha(){
     for(let i = 0; i < 6; i++ ){
         let randomChar = allCharacters[Math.floor(Math.random() * allCharacters.length)];
-        captcha.innerText += `${randomChar}`; //passing random characters inside captcha innerText
+        captcha.innerText += ` ${randomChar}`; //passing random characters inside captcha innerText
     }
  }
 
- reloadBtn.addEventListener("click", ()=> {
+ getCaptcha();
+ reloadBtn.addEventListener("click", ()=>{
     captcha.innerText = "";
     getCaptcha();
  });
- getCaptcha();
+
+ checkBtn.addEventListener("click", e =>{
+    e.preventDefault();//preventing button from its default behaviour
+    statusTxt.style.display = "block";
+    statusTxt.getElementsByClassName.display ="block";
+    //adding space after each value of user entered captcha because i`ve added spaces while generating captcha
+    let inputVal = inputField.value.split('').join(' ');
+    if(inputVal == captcha.innerText){ //if catcha matches 
+        statusTxt.style.color="#4db2ec"
+        statusTxt.innerText="Good! You dont seem to be a robot.";
+    }else{
+        statusTxt.style.color="#ff0"
+        statusTxt.innerText="Captcha did not match. Please try again!";
+    }
+ })

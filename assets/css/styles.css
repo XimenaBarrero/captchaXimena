@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Gowun Batang', serif;
+    font-family: 'Montserrat', sans-serif;
     color: rgb(77, 71, 71);
 }
 
@@ -113,11 +113,6 @@ body{
     padding-left: 19px;
 }
 
-.input-area input:valid + .check-btn{
-    opacity: 0;
-    pointer-events: auto;
-}
-
 .input-area .check-btn{
     position: absolute;
     right: 7px;
@@ -130,10 +125,14 @@ body{
     transform: translateY(-50%);
 }
 
+.input-area input:valid + .check-btn{
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .wrapper .status-txt{
     display: none;
     font-size: 18px;
     text-align: center;
-    color: #ff0000;
     margin: 20px 0 -5px 0;
 }
